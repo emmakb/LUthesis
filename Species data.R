@@ -31,112 +31,129 @@ ggplot() +
 #Check individual sharks
 sfshark1<- dplyr::filter(mako_df, shark %in% c("1"))
 ggplot() +
-  geom_point(data = sfshark1, aes(timestamp,latitude)) 
+  geom_point(data = sfshark1, aes(timestamp,latitude)) #good
 
 sfshark2<- dplyr::filter(mako_df, shark %in% c("2"))
 ggplot() +
-  geom_point(data = sfshark2, aes(timestamp,latitude)) 
+  geom_point(data = sfshark2, aes(timestamp,latitude)) #good
 
 sfshark3<- dplyr::filter(mako_df, shark %in% c("3"))
 ggplot() +
   geom_point(data = sfshark3, aes(timestamp,latitude)) 
+#Change of 627km (23 to 17) in 6 hours on May 12th 2013. Remove as outlier
+# != 17.4035
 
 sfshark4<- dplyr::filter(mako_df, shark %in% c("4"))
 ggplot() +
   geom_point(data = sfshark4, aes(timestamp,latitude)) 
+#Change of 632km (16 to 11) on July 21st 2013. Remove as outlier
+#!= 11.2176
 
 sfshark5<- dplyr::filter(mako_df, shark %in% c("5"))
 ggplot() +
-  geom_point(data = sfshark5, aes(timestamp,latitude)) 
+  geom_point(data = sfshark5, aes(timestamp,latitude)) #good
 
 sfshark6<- dplyr::filter(mako_df, shark %in% c("6"))
 ggplot() +
-  geom_point(data = sfshark6, aes(timestamp,latitude)) 
+  geom_point(data = sfshark6, aes(timestamp,latitude)) #good
 
 sfshark7<- dplyr::filter(mako_df, shark %in% c("7"))
 ggplot() +
-  geom_point(data = sfshark7, aes(timestamp,latitude)) 
+  geom_point(data = sfshark7, aes(timestamp,latitude)) #good
 
 sfshark8<- dplyr::filter(mako_df, shark %in% c("8"))
 ggplot() +
-  geom_point(data = sfshark8, aes(timestamp,latitude)) 
+  geom_point(data = sfshark8, aes(timestamp,latitude)) #good
 
 sfshark9<- dplyr::filter(mako_df, shark %in% c("9"))
 ggplot() +
   geom_point(data = sfshark9, aes(timestamp,latitude)) 
+#Change of 1000 km in an hour and change of 594km in an hour on May 21st 2014. Remove both as outliers
+#!= 18.9448 and !=28.1689
 
 sfshark10<- dplyr::filter(mako_df, shark %in% c("10"))
 ggplot() +
-  geom_point(data = sfshark10, aes(timestamp,latitude)) 
+  geom_point(data = sfshark10, aes(timestamp,latitude)) #good
 
 sfshark11<- dplyr::filter(mako_df, shark %in% c("11"))
 ggplot() +
-  geom_point(data = sfshark5, aes(timestamp,latitude)) 
+  geom_point(data = sfshark11, aes(timestamp,latitude)) 
+#Change of 1000km in 2 hours on May 19th 2015. Remove as outlier
+#!= 34.4313
 
 sfshark12<- dplyr::filter(mako_df, shark %in% c("12"))
 ggplot() +
-  geom_point(data = sfshark12, aes(timestamp,latitude)) 
+  geom_point(data = sfshark12, aes(timestamp,latitude)) #good
 
 sfshark13<- dplyr::filter(mako_df, shark %in% c("13"))
 ggplot() +
-  geom_point(data = sfshark13, aes(timestamp,latitude)) 
+  geom_point(data = sfshark13, aes(timestamp,latitude)) #good
 
 sfshark14<- dplyr::filter(mako_df, shark %in% c("14"))
 ggplot() +
-  geom_point(data = sfshark14, aes(timestamp,latitude)) 
+  geom_point(data = sfshark14, aes(timestamp,latitude)) #good
 
 sfshark15<- dplyr::filter(mako_df, shark %in% c("15"))
 ggplot() +
-  geom_point(data = sfshark15, aes(timestamp,latitude)) 
+  geom_point(data = sfshark15, aes(timestamp,latitude)) #good
 
 sfshark16<- dplyr::filter(mako_df, shark %in% c("16"))
 ggplot() +
-  geom_point(data = sfshark16, aes(timestamp,latitude)) 
+  geom_point(data = sfshark16, aes(timestamp,latitude)) #good
 
 sfshark17<- dplyr::filter(mako_df, shark %in% c("17"))
 ggplot() +
-  geom_point(data = sfshark17, aes(timestamp,latitude)) 
+  geom_point(data = sfshark17, aes(timestamp,latitude)) #good
 
 sfshark18<- dplyr::filter(mako_df, shark %in% c("18"))
 ggplot() +
-  geom_point(data = sfshark18, aes(timestamp,latitude)) 
+  geom_point(data = sfshark18, aes(timestamp,latitude)) #good
 
 sfshark19<- dplyr::filter(mako_df, shark %in% c("19"))
 ggplot() +
-  geom_point(data = sfshark19, aes(timestamp,latitude)) 
+  geom_point(data = sfshark19, aes(timestamp,latitude)) #good
 
 sfshark20<- dplyr::filter(mako_df, shark %in% c("20"))
 ggplot() +
-  geom_point(data = sfshark20, aes(timestamp,latitude)) 
+  geom_point(data = sfshark20, aes(timestamp,latitude)) #good
 
 sfshark21<- dplyr::filter(mako_df, shark %in% c("21"))
 ggplot() +
-  geom_point(data = sfshark21, aes(timestamp,latitude)) 
+  geom_point(data = sfshark21, aes(timestamp,latitude)) #good
 
 sfshark22<- dplyr::filter(mako_df, shark %in% c("22"))
 ggplot() +
   geom_point(data = sfshark22, aes(timestamp,latitude)) 
+#Change of 540km in 3 min on March 29th 2015. Remove as outlier
+#!= 17.3056
 
 sfshark23<- dplyr::filter(mako_df, shark %in% c("23"))
 ggplot() +
-  geom_point(data = sfshark23, aes(timestamp,latitude)) 
+  geom_point(data = sfshark23, aes(timestamp,latitude)) #good
 
 sfshark24<- dplyr::filter(mako_df, shark %in% c("24"))
 ggplot() +
-  geom_point(data = sfshark24, aes(timestamp,latitude)) 
+  geom_point(data = sfshark24, aes(timestamp,latitude)) #good
 
 sfshark25<- dplyr::filter(mako_df, shark %in% c("25"))
 ggplot() +
-  geom_point(data = sfshark25, aes(timestamp,latitude)) 
+  geom_point(data = sfshark25, aes(timestamp,latitude)) #good
 
 sfshark26<- dplyr::filter(mako_df, shark %in% c("26"))
 ggplot() +
   geom_point(data = sfshark26, aes(timestamp,latitude)) 
+#Change of 480km in 35 min on September 12th 2014. Remove as outlier
+#!= 45.3202
 
-
-#Movement of all SF makosover time#
+#Create new data set of sf makos with outliers removed
+mako_df2 <- mako_df[mako_df$latitude != '17.4035' & mako_df$latitude != '11.2176' & mako_df$latitude != '18.9448' & mako_df$latitude != '28.1689' & mako_df$latitude != '34.4313' & mako_df$latitude != '17.3056' & mako_df$latitude != '45.3202', ] #good now
+remove(mako_df)
 ggplot() +
-  geom_point(data = mako_df, aes(timestamp, latitude, col=shark))
+  geom_point(data = mako_df2, aes(timestamp, latitude, col='shark')) +
+  ggtitle("Latitudinal movements of shortfin mako sharks over time")
+
+#Save clean dataset
+save(mako_df2, file="mako_df2.Rdata")
 
 #####################################################################################
 
@@ -220,6 +237,9 @@ ggplot() +
 #Create new data set of white mature males with outliers removed
 white_matureM2<- white_matureM[white_matureM$Latitude != '43.42363' & white_matureM$Latitude != '40.33185', ] #good now
 remove(white_matureM)
+ ggplot() +
+  geom_point(data = white_matureM2, aes(Timestamp, Latitude, col='Shark Name')) +
+  ggtitle("Latitudinal movements of mature male white sharks over time")
 
 ##Movement of mature females over time##
 ggplot() +
@@ -267,6 +287,9 @@ ggplot() +
 #Create new dataset of mature females with outliers removed
 white_matureF2 <- white_matureF[white_matureF$Latitude != '22.24411' & white_matureF$Latitude != '21.602' & white_matureF$Latitude != '4.842' & white_matureF$Latitude != '51.222' , ]
 remove(white_matureF)
+ggplot() +
+  geom_point(data = white_matureF2, aes(Timestamp, Latitude, col='Shark Name')) +
+  ggtitle("Latitudinal movements of mature female white sharks over time")
 
 ##Movement of sub-adults over time##
 ggplot() +
@@ -328,6 +351,9 @@ ggplot() +
 #Create new dataset of subadults with outliers removed
 white_subadult2 <- white_subadult[white_subadult$Latitude != '26.71676', ]
 remove(white_subadult)
+ggplot() +
+  geom_point(data = white_subadult2, aes(Timestamp, Latitude, col='Shark Name')) +
+  ggtitle("Latitudinal movements of sub-adult white sharks over time")
 
 ##Movement of YOY over time##
 ggplot() +
@@ -374,6 +400,9 @@ ggplot() +
 #Create new YOY dataset with outliers removed
 white_YOY2 <- white_YOY[white_YOY$Latitude != '35.496', ]
 remove(white_YOY)
+ggplot() +
+  geom_point(data = white_YOY2, aes(Timestamp, Latitude, col='Shark Name')) +
+  ggtitle("Latitudinal movements of YOY white sharks over time")
 
 #Save clean datasets
 save(white_matureM2, file = "white_matureM2.Rdata")
