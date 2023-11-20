@@ -9,11 +9,6 @@ library(sp)
 library(sf)
 library(ncdf4)
 library(parsedate)
-library(plotdap)
-library(rerddap)
-library(rerddapXtracto)
-library(rnaturalearth)
-library(rnaturalearthdata)
 library(ggspatial)
 library(csvread)
 library(readxl)
@@ -235,11 +230,13 @@ ggplot() +
   geom_point(data = bob, aes(Timestamp, Latitude, col='Shark Name')) #good
 
 #Create new data set of white mature males with outliers removed
-white_matureM2<- white_matureM[white_matureM$Latitude != '43.42363' & white_matureM$Latitude != '40.33185', ] #good now
+#Set a limit on the date to match those of the env. variables
+white_matureM2<- white_matureM[white_matureM$Latitude != '43.42363' & white_matureM$Latitude != '40.33185' & white_matureM$Timestamp <= '2022-06-29', ] #good now
 remove(white_matureM)
- ggplot() +
-  geom_point(data = white_matureM2, aes(Timestamp, Latitude, col='Shark Name')) +
-  ggtitle("Latitudinal movements of mature male white sharks over time")
+ ggplot(data = white_matureM2, aes(Timestamp, Latitude)) +
+  geom_point(col="blue") + xlab("Time (Years)") + scale_y_continuous(limits=c(20,50)) + 
+   theme_classic() + 
+  ggtitle("Latitudinal movements of 10 mature male white sharks over time")
 
 ##Movement of mature females over time##
 ggplot() +
@@ -287,9 +284,9 @@ ggplot() +
 #Create new dataset of mature females with outliers removed
 white_matureF2 <- white_matureF[white_matureF$Latitude != '22.24411' & white_matureF$Latitude != '21.602' & white_matureF$Latitude != '4.842' & white_matureF$Latitude != '51.222' , ]
 remove(white_matureF)
-ggplot() +
-  geom_point(data = white_matureF2, aes(Timestamp, Latitude, col='Shark Name')) +
-  ggtitle("Latitudinal movements of mature female white sharks over time")
+ggplot(white_matureF2, aes(Timestamp, Latitude)) +
+  geom_line(col="blue") + xlab("Years") + ylab("Latitude") +
+  ggtitle("Latitudinal movements of 7 mature female white sharks over time")
 
 ##Movement of sub-adults over time##
 ggplot() +
@@ -349,7 +346,8 @@ ggplot() +
   geom_point(data = betsy, aes(Timestamp, Latitude, col='Shark Name'))
 
 #Create new dataset of subadults with outliers removed
-white_subadult2 <- white_subadult[white_subadult$Latitude != '26.71676', ]
+#Set a limit on the date to match that of the env. varibales
+white_subadult2 <- white_subadult[white_subadult$Latitude != '26.71676' & white_subadult$Timestamp <= '2022-6-29', ]
 remove(white_subadult)
 ggplot() +
   geom_point(data = white_subadult2, aes(Timestamp, Latitude, col='Shark Name')) +
@@ -400,9 +398,9 @@ ggplot() +
 #Create new YOY dataset with outliers removed
 white_YOY2 <- white_YOY[white_YOY$Latitude != '35.496', ]
 remove(white_YOY)
-ggplot() +
-  geom_point(data = white_YOY2, aes(Timestamp, Latitude, col='Shark Name')) +
-  ggtitle("Latitudinal movements of YOY white sharks over time")
+ggplot(data = white_YOY2, aes(Timestamp, Latitude)) +
+  geom_point(col="blue") + xlab("Time (Years)") + scale_y_continuous(limits=c(25, 45)) + 
+  ggtitle("Latitudinal movements of 10 YOY white sharks over time")
 
 #Save clean datasets
 save(white_matureM2, file = "white_matureM2.Rdata")
