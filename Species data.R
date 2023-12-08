@@ -12,8 +12,6 @@ library(parsedate)
 library(ggspatial)
 library(csvread)
 library(readxl)
-library(lubridate)
-library(tidyverse)
 
 ##SHORTFIN MAKO DATA##
 #Load in CSV data
@@ -198,8 +196,8 @@ ggplot() +
 ulysses<-dplyr::filter(white_matureM, white_matureM$`Shark Name` %in% c("Ulysses"))
 ggplot() +
   geom_point(data = ulysses, aes(Timestamp, Latitude, col='Shark Name')) 
-#Point on land, September 30th 2021 + March 31st 2022 x 5
-#!="44.61136"(#1932) + 32.25833 (#2259-2263)
+#Point on land, September 30th 2021 
+#!="44.61136"(#1932) 
 
 #Scot
 scot<-dplyr::filter(white_matureM, white_matureM$`Shark Name` %in% c("Scot"))
@@ -226,15 +224,15 @@ ggplot() +
   geom_point(data = jefferson, aes(Timestamp, Latitude, col='Shark Name'))
 #Change of 1000km in 3 min on March 25th 2019 at 11pm so remove as outlier. 
 #!= '43.42363' (#790)
-#Point on land, October 21st 2018 and November 29th 2019
-#!="34.22706"(#563) + #1184
+#Point on land, October 21st 2018 
+#!="34.22706"(#563) 
 
 #Hilton
 hilton<-dplyr::filter(white_matureM, white_matureM$`Shark Name` %in% c("Hilton"))
 ggplot() +
   geom_point(data = hilton, aes(Timestamp, Latitude, col='Shark Name')) 
 #Point on land October 4th 2018 & December 30th 2018 & March 4th 2018 & June 13th 2018 & October 19th 2017 & November 6th 2017, February 6th 2019 x2 remove as outlier
-#!= "47.39731" (#515)+ != "30.32050" (#704) + !="28.74019" (#327) + !="34.95270" (#416) + !="44.01800" (#187?) + !="44.33861" (#202) + #736 + #737 + #740
+#!= "47.39731" (#515)+ != "30.32050" (#704) + !="28.74019" (#327) + !="34.95270" (#416) + !="44.01800" (#187?) + !="44.33861" (#202) 
 #Point on land, November 7th 2017
 #45.00898 (#204) 
 
@@ -244,6 +242,8 @@ ggplot() +
   geom_point(data = hal, aes(Timestamp, Latitude, col='Shark Name'))
 #Points on land December 14th 2018 & May 30th 2019 & July 31st 2020 & February 6th 2020 & April 9th 2019, remove as outliers
 #!= "21.50314" (#693)+ != "35.73477" (#821)+ != "46.29630" (#1450) + !="34.25591" (#1254) + !="35.32429" (#809)
+#Point on land, November 14th 2018
+#37.68169 (#615)
 
 #Bob
 bob<-dplyr::filter(white_matureM, white_matureM$`Shark Name` %in% c("Bob"))
@@ -252,10 +252,10 @@ ggplot() +
 #Point on land on October 21st 2021, remove as outlier
 #!= "39.42980" (#1951)
 
-#Create new data set of white mature males with 35 outliers removed
+#Create new data set of white mature males with 27 outliers removed
 #Set a limit on the date to match those of the env. variables
 whitematureMordered<-white_matureM %>% arrange(Timestamp)
-white_matureM2<-whitematureMordered[-c(187,202,204,327,416,515,563,693,704,736,737,740,790,809,821,1184,1254,1450,1621,1622,1630,1732,1886,1932,1951,2178,2259:2263,2316,2319,2422,2434,2430:2655),]
+white_matureM2<-whitematureMordered[-c(187,202,204,327,416,515,563,615,693,704,790,809,821,1254,1450,1621,1622,1630,1732,1886,1932,1951,2178,2316,2319,2422,2434,2430:2655),]
 remove(white_matureM)
  ggplot(data = white_matureM2, aes(Timestamp, Latitude)) +
   geom_point(col="blue") + xlab("Time (Years)") + scale_y_continuous(limits=c(20,50)) + 
@@ -318,6 +318,7 @@ ggplot() +
 #Create new dataset of mature females with 15 outliers removed
 whitematureFordered<-white_matureF %>% arrange(Timestamp)
 white_matureF2<-whitematureFordered[-c(842,973,974,975,976,978,2238,2239,2993,2534,3102,3313,4681,4848,5141),]
+##all clean##
 remove(white_matureF)
 ggplot(white_matureF2, aes(Timestamp, Latitude)) +
   geom_line(col="blue") + xlab("Years") + ylab("Latitude") +
@@ -363,8 +364,8 @@ ggplot() +
   geom_point(data = misscosta, aes(Timestamp, Latitude, col='Shark Name'))
 #Change of 1203 km in 40 min on June 13th 2019. Remove outlier
 #!= 26.71676 (#452)
-#Points on land, June 17th 2019, June 13th 2019, November 19th 2016, June 24th 2018, December 1st 2018, February 9th 2018, remove as outliers
-#40.90745 (#454)+ 37.54695 (#453) + 20.89400 (#130) + 35.09038 (#282) + 36.45897(#362) + 25.57978(#249)
+#Points on land, June 17th 2019, June 13th 2019, November 19th 2016, June 24th 2018, December 1st 2018, February 9th 2018, March 7th 2019, April 3rd 2019, remove as outliers
+#40.90745 (#454)+ 37.54695 (#453)+ 20.89400 (#130) + 35.09038 (#282) + 36.45897(#362) + 25.57978(#249) + 27.60256 (#412) + 26.37422(#428)
 
 #Hirtle
 hirtle<-dplyr::filter(white_subadult, white_subadult$`Shark Name` %in% c("Hirtle"))
@@ -375,15 +376,15 @@ ggplot() +
 helena<-dplyr::filter(white_subadult, white_subadult$`Shark Name` %in% c("Helena"))
 ggplot() +
   geom_point(data = helena, aes(Timestamp, Latitude, col='Shark Name')) 
-#Point on land, May 23rd 2020, remove as outlier
-#37.96828(#689)
+#Point on land, May 23rd 2020 & November 21st 2020, remove as outlier
+#37.96828(#689) + 26.37422(#949)
 
 #Edithe
 edithe<-dplyr::filter(white_subadult, white_subadult$`Shark Name` %in% c("Edithe"))
 ggplot() +
   geom_point(data = edithe, aes(Timestamp, Latitude, col='Shark Name')) 
-#Point on land, January 11th 2021, remove as outlier
-#30.02627 (#1011)
+#Point on land, January 11th 2021, November 24th 2020, remove as outlier
+#30.02627 (#1011) + 27.60256(#958)
 
 #Betsy
 betsy<-dplyr::filter(white_subadult, white_subadult$`Shark Name` %in% c("Betsy"))
@@ -392,10 +393,10 @@ ggplot() +
 #Points in pacific on September 21st 2014 & April 4th 2015 & September 25th 2014 & November 10th 2015, remove as outliers
 #54.21600 (#18) + 35.47400 (#29) + 38.69600 (#19) + 41.003 (#35)
 
-#Create new dataset of subadults with 19 outliers removed
+#Create new dataset of subadults with 23 outliers removed
 #Set a limit on the date to match that of the env. varibales
 whitesubadultordered<-white_subadult %>% arrange(Timestamp)
-white_subadult2 <- whitesubadultordered[-c(18,19,29,35,130,131,249,281,282,357,358,362,452,453,454,689,725,904,1011,1523:), ]
+white_subadult2 <- whitesubadultordered[-c(18,19,29,35,130,131,249,281,357,358,362,412,428,452,453,454,689,725,904,949,958,1011,1523:1654), ]
 remove(white_subadult)
 ggplot() +
   geom_point(data = white_subadult2, aes(Timestamp, Latitude, col='Shark Name')) +
@@ -450,13 +451,14 @@ ggplot() +
 #Create new YOY dataset with 5 outliers removed
 whiteYOYordered<-white_YOY %>% arrange(Timestamp)
 white_YOY2 <- whiteYOYordered[-c(67,360,375,413,414),]
+##all clean
 remove(white_YOY)
 ggplot(data = white_YOY2, aes(Timestamp, Latitude)) +
   geom_point(col="blue") + xlab("Time (Years)") + scale_y_continuous(limits=c(25, 45)) + 
   ggtitle("Latitudinal movements of 10 YOY white sharks over time")
 
 #Save clean datasets
-save(white_matureM2, file = "white_matureM2.Rdata")
-save(white_matureF2, file = "white_matureF2.Rdata")
-save(white_subadult2, file = "white_subadult2.Rdata")
-save(white_YOY2, file = "white_YOY2.Rdata")
+save(white_matureM2, file = "white_matureM2.Rdata") #clean
+save(white_matureF2, file = "white_matureF2.Rdata") #clean
+save(white_subadult2, file = "white_subadult2.Rdata") #clean
+save(white_YOY2, file = "white_YOY2.Rdata") #clean
