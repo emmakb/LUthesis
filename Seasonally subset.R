@@ -64,24 +64,3 @@ save(WSA_autumn, file = "WSA_autumn.Rdata")
 WYOY_autumn <- subset(white_YOY2, as.numeric(format.Date(Timestamp,"%m")) %in% c(10,11,12))
 save(WYOY_autumn, file = "WYOY_autumn.Rdata")
 
-#______________________________________________________________________________________________#
-##LINK SEASONAL DATA TO ENV DATA##
-
-#Step 1: Load env data
-#chlorophyll a data
-chlaInfo <- rerddap::info('erdMH1chla1day')
-chlaInfo
-#depth data
-depthInfo <- rerddap::info('etopo1_bedrock')
-depthInfo
-#SST data
-sstInfo <- rerddap::info('erdMH1sstd1dayR20190SQ')
-sstInfo
-#salinity data
-pHInfo <- rerddap::info(datasetid = "coastwatchSMOSv662SSS1day", url = "https://coastwatch.pfeg.noaa.gov/erddap/")
-pHInfo
-
-xlen<- 0.2
-ylen<- 0.2
-
-#Step 2: Shortfin makos
