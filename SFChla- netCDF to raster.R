@@ -103,6 +103,7 @@ winter_chla_vec_2015 <- as.vector(winter_chla_2015)
 winter_chla_2015_df <- data.frame(cbind(winter_lonlattime3, winter_chla_vec_2015))
 winter_chla_2015_df <- rename(winter_chla_2015_df, longitude = Var1, latitude=Var2, time=Var3, chlorophyll = winter_chla_vec_2015) 
 
+#Combine yearly dataframes into one big one for winter
 winter_df <- data.frame(rbind(winter_chla_2013_df, winter_chla_2014_df, winter_chla_2015_df))
 winter_df$chlorophyll = as.numeric(winter_df$chlorophyll)
 winter_df$longitude = as.numeric(winter_df$longitude)
@@ -211,11 +212,13 @@ spring_chla_vec_2015 <- as.vector(spring_chla_2015)
 spring_chla_2015_df <- data.frame(cbind(spring_lonlattime3, spring_chla_vec_2015))
 spring_chla_2015_df <- rename(spring_chla_2015_df, longitude = Var1, latitude=Var2, time=Var3, chlorophyll = spring_chla_vec_2015)
 
+#Combine yearly dataframes into one big one for spring
 spring_df <- data.frame(rbind(spring_chla_2013_df, spring_chla_2014_df, spring_chla_2015_df))
 spring_df$chlorophyll = as.numeric(spring_df$chlorophyll)
 spring_df$longitude = as.numeric(spring_df$longitude)
 spring_df$latitude = as.numeric(spring_df$latitude)
 spring_df2 <- spring_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .))) #change NaNs to NAs
+#____________________________________________________________________________________________________________
 
 #SUMMER
 #2013
@@ -317,11 +320,13 @@ summer_chla_vec_2015 <- as.vector(summer_chla_2015)
 summer_chla_2015_df <- data.frame(cbind(summer_lonlattime3,summer_chla_vec_2015))
 summer_chla_2015_df <- rename(summer_chla_2015_df, longitude = Var1, latitude=Var2, time=Var3, chlorophyll = summer_chla_vec_2015) 
 
+#Combine yearly dataframes into one big one for summer
 summer_df <- data.frame(rbind(summer_chla_2013_df, summer_chla_2014_df, summer_chla_2015_df))
 summer_df$chlorophyll = as.numeric(summer_df$chlorophyll)
 summer_df$longitude = as.numeric(summer_df$longitude)
 summer_df$latitude = as.numeric(summer_df$latitude)
 summer_df2 <- summer_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .))) #change NaNs to NAs
+#____________________________________________________________________________________________________________
 
 #AUTUMN
 #2013
@@ -390,7 +395,7 @@ autumn_chla_vec_2014 <- as.vector(autumn_chla_2014)
 autumn_chla_2014_df <- data.frame(cbind(autumn_lonlattime2, autumn_chla_vec_2014))
 autumn_chla_2014_df <- rename(autumn_chla_2014_df, longitude = Var1, latitude=Var2, time=Var3, chlorophyll = autumn_chla_vec_2014) 
 
-#Bind data frames of all three years together for each season
+#Combine yearly dataframes into one big one for autumn
 autumn_df <- data.frame(rbind(autumn_chla_2013_df, autumn_chla_2014_df))
 autumn_df$chlorophyll = as.numeric(autumn_df$chlorophyll)
 autumn_df$longitude = as.numeric(autumn_df$longitude)
@@ -402,6 +407,7 @@ save(winter_df2, file = "SF_chla_winter_df")
 save(spring_df2, file = "SF_chla_spring_df")
 save(summer_df2, file = "SF_chla_summer_df")
 save(autumn_df2, file = "SF_chla_autumn_df")
+#____________________________________________________________________________________________________________
 
 #NEED TO RASTERIZE DATA FRAMES
 setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla")

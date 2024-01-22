@@ -104,11 +104,13 @@ winter_sst_vec_2015 <- as.vector(winter_sst_2015)
 winter_sst_2015_df <- data.frame(cbind(winter_lonlattime3, winter_sst_vec_2015))
 winter_sst_2015_df <- rename(winter_sst_2015_df, longitude = Var1, latitude=Var2, time=Var3, sst = winter_sst_vec_2015) 
 
+#Combine yearly dataframes into one big one for winter
 winter_df <- data.frame(rbind(winter_sst_2013_df, winter_sst_2014_df, winter_sst_2015_df))
 winter_df$sst = as.numeric(winter_df$sst)
 winter_df$longitude = as.numeric(winter_df$longitude)
 winter_df$latitude = as.numeric(winter_df$latitude)
 winter_df2 <- winter_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .))) #change NaNs to NAs
+#____________________________________________________________________________________________________________
 
 #SPRING
 setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Spring")
@@ -211,11 +213,13 @@ spring_sst_vec_2015 <- as.vector(spring_sst_2015)
 spring_sst_2015_df <- data.frame(cbind(spring_lonlattime3, spring_sst_vec_2015))
 spring_sst_2015_df <- rename(spring_sst_2015_df, longitude = Var1, latitude=Var2, time=Var3, sst = spring_sst_vec_2015)
 
+#Combine yearly dataframes into one big one for spring
 spring_df <- data.frame(rbind(spring_sst_2013_df, spring_sst_2014_df, spring_sst_2015_df))
 spring_df$sst = as.numeric(spring_df$sst)
 spring_df$longitude = as.numeric(spring_df$longitude)
 spring_df$latitude = as.numeric(spring_df$latitude)
 spring_df2 <- spring_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .))) #change NaNs to NAs
+#____________________________________________________________________________________________________________
 
 #SUMMER
 setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Summer")
@@ -318,11 +322,13 @@ summer_sst_vec_2015 <- as.vector(summer_sst_2015)
 summer_sst_2015_df <- data.frame(cbind(summer_lonlattime3,summer_sst_vec_2015))
 summer_sst_2015_df <- rename(summer_sst_2015_df, longitude = Var1, latitude=Var2, time=Var3, sst = summer_sst_vec_2015) 
 
+#Combine yearly dataframes into one big one for summer
 summer_df <- data.frame(rbind(summer_sst_2013_df, summer_sst_2014_df, summer_sst_2015_df))
 summer_df$sst = as.numeric(summer_df$sst)
 summer_df$longitude = as.numeric(summer_df$longitude)
 summer_df$latitude = as.numeric(summer_df$latitude)
 summer_df2 <- summer_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .))) #change NaNs to NAs
+#____________________________________________________________________________________________________________
 
 #AUTUMN
 setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Autumn")
@@ -392,7 +398,7 @@ autumn_sst_vec_2014 <- as.vector(autumn_sst_2014)
 autumn_sst_2014_df <- data.frame(cbind(autumn_lonlattime2, autumn_sst_vec_2014))
 autumn_sst_2014_df <- rename(autumn_sst_2014_df, longitude = Var1, latitude=Var2, time=Var3, sst = autumn_sst_vec_2014) 
 
-#Bind data frames of all three years together for each season
+#Combine yearly dataframes into one big one for autumn
 autumn_df <- data.frame(rbind(autumn_sst_2013_df, autumn_sst_2014_df))
 autumn_df$sst = as.numeric(autumn_df$sst)
 autumn_df$longitude = as.numeric(autumn_df$longitude)
@@ -404,6 +410,7 @@ save(winter_df2, file = "SF_sst_winter_df")
 save(spring_df2, file = "SF_sst_spring_df")
 save(summer_df2, file = "SF_sst_summer_df")
 save(autumn_df2, file = "SF_sst_autumn_df")
+#____________________________________________________________________________________________________________
 
 #NEED TO RASTERIZE DATA FRAMES
 setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST")
