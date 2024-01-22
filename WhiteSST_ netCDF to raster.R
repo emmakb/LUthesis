@@ -1216,7 +1216,7 @@ time_vector5 <- as.POSIXct(time5, origin='1970-01-01 00:00:00', tz="GMT")
 #Time subset from netcdf
 autumnstart5 <- as.POSIXct("2017-10-01", tz="GMT")
 autumnend5 <- as.POSIXct("2017-12-31", tz="GMT")
-autumn_sub5 <- (time_vector3 > autumnstart3) & (time_vector3 < autumnend3)
+autumn_sub5 <- (time_vector5 > autumnstart5) & (time_vector5 < autumnend5)
 
 #Bring in variables from subset
 autumn_sst_2017 <- sst[,,autumn_sub5]
@@ -1498,16 +1498,16 @@ WSA_winter_sst_rast <- terra::rasterize(
 WSA_winter_sst_rast<- rename(WSA_winter_sst_rast, sst=last)
 
 #Young of year
-WYOY_chla_winter_df2<-winter_yoy_df2[,c(1,2,4)]
+WYOY_sst_winter_df2<-winter_yoy_df2[,c(1,2,4)]
 
-winter_WYOY_mask <- rast(nrows = length(unique(round(WYOY_chla_winter_df2$latitude, 5))),
-                         ncol = length(unique(round(WYOY_chla_winter_df2$longitude, 5))),
-                         xmin = min(WYOY_chla_winter_df2$longitude), xmax = max(WYOY_chla_winter_df2$longitude),
-                         ymin = min(WYOY_chla_winter_df2$latitude), ymax = max(WYOY_chla_winter_df2$latitude),
+winter_WYOY_mask <- rast(nrows = length(unique(round(WYOY_sst_winter_df2$latitude, 5))),
+                         ncol = length(unique(round(WYOY_sst_winter_df2$longitude, 5))),
+                         xmin = min(WYOY_sst_winter_df2$longitude), xmax = max(WYOY_sst_winter_df2$longitude),
+                         ymin = min(WYOY_sst_winter_df2$latitude), ymax = max(WYOY_sst_winter_df2$latitude),
                          crs = '+proj=longlat +datum=WGS84')
 
 winter_WYOY_vect <- vect(
-  WYOY_chla_winter_df2,
+  WYOY_sst_winter_df2,
   crs = '+proj=longlat +datum=WGS84',
   geom=c('longitude', 'latitude')
 )
@@ -1519,22 +1519,22 @@ WYOY_winter_sst_rast <- terra::rasterize(
 )
 
 #sst column has now been changed to "last" so must rename
-WYOY_winter_sst_rast<- rename(WYOY_winter_sst_chla, sst=last)
+WYOY_winter_sst_rast<- rename(WYOY_winter_sst_rast, sst=last)
 
 #___________________________________________________________________________________________
 #Spring
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Spring")
-load("WM_chla_spring_df")
-load("WF_chla_spring_df")
-load("WSA_chla_spring_df")
-load("WYOY_chla_spring_df")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Spring")
+load("WM_sst_spring_df")
+load("WF_sst_spring_df")
+load("WSA_sst_spring_df")
+load("WYOY_sst_spring_df")
 
 #Mature males
 WM_sst_spring_df2<-spring_whitemale_df2[,c(1,2,4)]
 
 spring_WM_mask <- rast(nrows = length(unique(round(WM_sst_spring_df2$latitude, 5))),
                        ncol = length(unique(round(WM_sst_spring_df2$longitude, 5))),
-                       xmin = min(WM_sst_spring_df2$longitude), xmax = max(WM_st_spring_df2$longitude),
+                       xmin = min(WM_sst_spring_df2$longitude), xmax = max(WM_sst_spring_df2$longitude),
                        ymin = min(WM_sst_spring_df2$latitude), ymax = max(WM_sst_spring_df2$latitude),
                        crs = '+proj=longlat +datum=WGS84')
 
@@ -1563,7 +1563,7 @@ spring_WF_mask <- rast(nrows = length(unique(round(WF_sst_spring_df2$latitude, 5
                        crs = '+proj=longlat +datum=WGS84')
 
 spring_WF_vect <- vect(
-  WF_chla_spring_df2,
+  WF_sst_spring_df2,
   crs = '+proj=longlat +datum=WGS84',
   geom=c('longitude', 'latitude')
 )
@@ -1627,11 +1627,11 @@ WYOY_spring_sst_rast<- rename(WYOY_spring_sst_rast, sst=last)
 
 #___________________________________________________________________________________________
 #Summer
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Summer")
-load("WM_chla_summer_df")
-load("WF_chla_summer_df")
-load("WSA_chla_summer_df")
-load("WYOY_chla_summer_df")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Summer")
+load("WM_sst_summer_df")
+load("WF_sst_summer_df")
+load("WSA_sst_summer_df")
+load("WYOY_sst_summer_df")
 
 #Mature males
 WM_sst_summer_df2<-summer_whitemale_df2[,c(1,2,4)]
@@ -1691,7 +1691,7 @@ summer_WSA_mask <- rast(nrows = length(unique(round(WSA_sst_summer_df2$latitude,
                         crs = '+proj=longlat +datum=WGS84')
 
 summer_WSA_vect <- vect(
-  WM_chla_summer_df2,
+  WSA_sst_summer_df2,
   crs = '+proj=longlat +datum=WGS84',
   geom=c('longitude', 'latitude')
 )
@@ -1706,7 +1706,7 @@ WSA_summer_sst_rast <- terra::rasterize(
 WSA_summer_sst_rast <- rename(WSA_summer_sst_rast, sst=last)
 
 #Young of year
-WYOY_chla_summer_df2<-summer_yoy_df2[,c(1,2,4)]
+WYOY_sst_summer_df2<-summer_yoy_df2[,c(1,2,4)]
 
 summer_WM_mask <- rast(nrows = length(unique(round(WYOY_sst_summer_df2$latitude, 5))),
                        ncol = length(unique(round(WYOY_sst_summer_df2$longitude, 5))),
@@ -1731,11 +1731,11 @@ WYOY_summer_sst_rast <- rename(WYOY_summer_sst_rast, sst=last)
 
 #___________________________________________________________________________________________
 #Autumn
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Autumn")
-load("WM_chla_autumn_df")
-load("WF_chla_autumn_df")
-load("WSA_chla_autumn_df")
-load("WYOY_chla_autumn_df")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Autumn")
+load("WM_sst_autumn_df")
+load("WF_sst_autumn_df")
+load("WSA_sst_autumn_df")
+load("WYOY_sst_autumn_df")
 
 #Mature males
 WM_sst_autumn_df2<-autumn_whitemale_df2[,c(1,2,4)]

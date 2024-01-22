@@ -1217,7 +1217,7 @@ time_vector5 <- as.POSIXct(time5, origin='1970-01-01 00:00:00', tz="GMT")
 #Time subset from netcdf
 autumnstart5 <- as.POSIXct("2017-10-01", tz="GMT")
 autumnend5 <- as.POSIXct("2017-12-31", tz="GMT")
-autumn_sub5 <- (time_vector3 > autumnstart3) & (time_vector3 < autumnend3)
+autumn_sub5 <- (time_vector5 > autumnstart5) & (time_vector5 < autumnend5)
 
 #Bring in variables from subset
 autumn_chla_2017 <- chla[,,autumn_sub5]
