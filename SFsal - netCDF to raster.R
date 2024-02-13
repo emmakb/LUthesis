@@ -1,15 +1,12 @@
 library(ncdf4)
-library(raster)
-library(dplyr)
-library(tidyverse)
 library(terra)
 library(tidyterra)
 
 #WINTER
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Sal/Winter")
 #2013
 #Look directly into netcdf file and pull data directly from it
-sal_winter_2013 <- nc_open('Sal_winter_2013.nc')
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Sal/Winter")
+sal_winter_2013 <- nc_open('sal_winter_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -42,7 +39,7 @@ winter_sal_2013_df <- rename(winter_sal_2013_df, longitude = Var1, latitude=Var2
 
 #2014
 #Look directly into netcdf file and pull data directly from it
-sal_winter_2014 <- nc_open('Sal_winter_2014.nc')
+sal_winter_2014 <- nc_open('sal_winter_2014.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -75,7 +72,7 @@ winter_sal_2014_df <- rename(winter_sal_2014_df, longitude = Var1, latitude=Var2
 
 #2015
 #Look directly into netcdf file and pull data directly from it
-sal_winter_2015 <- nc_open('Sal_winter_2015.nc')
+sal_winter_2015 <- nc_open('sal_winter_2015.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -115,10 +112,10 @@ winter_df2 <- winter_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #____________________________________________________________________________________________________________
 
 #SPRING
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Sal/Spring")
 #2013
 #Look directly into netcdf file and pull data directly from it
-sal_spring_2013 <- nc_open('Sal_spring_2013.nc')
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Sal/Spring")
+sal_spring_2013 <- nc_open('sal_spring_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -151,7 +148,7 @@ spring_sal_2013_df <- rename(spring_sal_2013_df, longitude = Var1, latitude=Var2
 
 #2014
 #Look directly into netcdf file and pull data directly from it
-sal_spring_2014 <- nc_open('Sal_spring_2014.nc')
+sal_spring_2014 <- nc_open('sal_spring_2014.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -184,7 +181,7 @@ spring_sal_2014_df <- rename(spring_sal_2014_df, longitude = Var1, latitude=Var2
 
 #2015
 #Look directly into netcdf file and pull data directly from it
-sal_spring_2015 <- nc_open('Sal_spring_2015.nc')
+sal_spring_2015 <- nc_open('sal_spring_2015.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -224,10 +221,10 @@ spring_df2 <- spring_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #____________________________________________________________________________________________________________
 
 #SUMMER
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Sal/Summer")
 #2013
 #Look directly into netcdf file and pull data directly from it
-sal_summer_2013 <- nc_open('Sal_summer_2013.nc')
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Sal/Summer")
+sal_summer_2013 <- nc_open('sal_summer_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -260,7 +257,7 @@ summer_sal_2013_df<- rename(summer_sal_2013_df, longitude = Var1, latitude=Var2,
 
 #2014
 #Look directly into netcdf file and pull data directly from it
-sal_summer_2014 <- nc_open('Sal_summer_2014.nc')
+sal_summer_2014 <- nc_open('sal_summer_2014.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -293,7 +290,7 @@ summer_sal_2014_df <- rename(summer_sal_2014_df, longitude = Var1, latitude=Var2
 
 #2015
 #Look directly into netcdf file and pull data directly from it
-sal_summer_2015 <- nc_open('Sal_summer_2015.nc')
+sal_summer_2015 <- nc_open('sal_summer_2015.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -333,10 +330,10 @@ summer_df2 <- summer_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #____________________________________________________________________________________________________________
 
 #AUTUMN
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Sal/Autumn")
 #2013
 #Look directly into netcdf file and pull data directly from it
-sal_autumn_2013 <- nc_open('Sal_autumn_2013.nc')
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Sal/Autumn")
+sal_autumn_2013 <- nc_open('sal_autumn_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -369,7 +366,7 @@ autumn_sal_2013_df <- rename(autumn_sal_2013_df, longitude = Var1, latitude=Var2
 
 #2014
 #Look directly into netcdf file and pull data directly from it
-sal_autumn_2014 <- nc_open('Sal_autumn_2014.nc')
+sal_autumn_2014 <- nc_open('sal_autumn_2014.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -442,7 +439,7 @@ winter_rast_sal <- terra::rasterize(
   'sal' #or whatever variable name you're dealing with
 )
 
-#chlorophyll column has now been changed to "last" so must rename
+#salinity column has now been changed to "last" so must rename
 winter_rast_sal<- rename(winter_rast_sal, sal=last)
 
 #spring
@@ -466,7 +463,7 @@ spring_rast_sal <- terra::rasterize(
   'sal' #or whatever variable name you're dealing with
 )
 
-#chlorophyll column has now been changed to "last" so must rename
+#salinity column has now been changed to "last" so must rename
 spring_rast_sal<- rename(spring_rast_sal, sal=last)
 
 #summer
@@ -490,7 +487,7 @@ summer_rast_sal <- terra::rasterize(
   'sal' #or whatever variable name you're dealing with
 )
 
-#chlorophyll column has now been changed to "last" so must rename
+#salinity column has now been changed to "last" so must rename
 summer_rast_sal<- rename(summer_rast_sal, sal=last)
 
 #autumn
@@ -514,5 +511,5 @@ autumn_rast_sal <- terra::rasterize(
   'sal' #or whatever variable name you're dealing with
 )
 
-#chlorophyll column has now been changed to "last" so must rename
+#salnity column has now been changed to "last" so must rename
 autumn_rast_sal<- rename(autumn_rast_sal, sal=last)

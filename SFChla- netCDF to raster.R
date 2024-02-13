@@ -1,12 +1,12 @@
 library(ncdf4)
-library(raster)
-library(dplyr)
-library(tidyverse)
+library(terra)
+library(tidyterra)
 
 #WINTER
 #2013
 #Look directly into netcdf file and pull data directly from it
-chla_winter_2013 <- nc_open('Chla_winter_2013.nc')
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Winter")
+chla_winter_2013 <- nc_open('chla_winter_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -39,7 +39,7 @@ winter_chla_2013_df <- rename(winter_chla_2013_df, longitude = Var1, latitude=Va
 
 #2014
 #Look directly into netcdf file and pull data directly from it
-chla_winter_2014 <- nc_open('Chla_winter_2014.nc')
+chla_winter_2014 <- nc_open('chla_winter_2014.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -72,7 +72,7 @@ winter_chla_2014_df <- rename(winter_chla_2014_df, longitude = Var1, latitude=Va
 
 #2015
 #Look directly into netcdf file and pull data directly from it
-chla_winter_2015 <- nc_open('Chla_winter_2015.nc')
+chla_winter_2015 <- nc_open('chla_winter_2015.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -115,7 +115,8 @@ winter_df2 <- winter_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #SPRING
 #2013
 #Look directly into netcdf file and pull data directly from it
-chla_spring_2013 <- nc_open('Chla_spring_2013.nc')
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Spring")
+chla_spring_2013 <- nc_open('chla_spring_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -148,7 +149,7 @@ spring_chla_2013_df <- rename(spring_chla_2013_df, longitude = Var1, latitude=Va
 
 #2014
 #Look directly into netcdf file and pull data directly from it
-chla_spring_2014 <- nc_open('Chla_spring_2014.nc')
+chla_spring_2014 <- nc_open('chla_spring_2014.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -181,7 +182,7 @@ spring_chla_2014_df <- rename(spring_chla_2014_df, longitude = Var1, latitude=Va
 
 #2015
 #Look directly into netcdf file and pull data directly from it
-chla_spring_2015 <- nc_open('Chla_spring_2015.nc')
+chla_spring_2015 <- nc_open('chla_spring_2015.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -223,7 +224,8 @@ spring_df2 <- spring_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #SUMMER
 #2013
 #Look directly into netcdf file and pull data directly from it
-chla_summer_2013 <- nc_open('Chla_summer_2013.nc')
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Summer")
+chla_summer_2013 <- nc_open('chla_summer_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -256,7 +258,7 @@ summer_chla_2013_df<- rename(summer_chla_2013_df, longitude = Var1, latitude=Var
 
 #2014
 #Look directly into netcdf file and pull data directly from it
-chla_summer_2014 <- nc_open('Chla_summer_2014.nc')
+chla_summer_2014 <- nc_open('chla_summer_2014.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -289,7 +291,7 @@ summer_chla_2014_df <- rename(summer_chla_2014_df, longitude = Var1, latitude=Va
 
 #2015
 #Look directly into netcdf file and pull data directly from it
-chla_summer_2015 <- nc_open('Chla_summer_2015.nc')
+chla_summer_2015 <- nc_open('chla_summer_2015.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -331,7 +333,8 @@ summer_df2 <- summer_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #AUTUMN
 #2013
 #Look directly into netcdf file and pull data directly from it
-chla_autumn_2013 <- nc_open('Chla_autumn_2013.nc')
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Autumn")
+chla_autumn_2013 <- nc_open('chla_autumn_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data
@@ -364,7 +367,7 @@ autumn_chla_2013_df <- rename(autumn_chla_2013_df, longitude = Var1, latitude=Va
 
 #2014
 #Look directly into netcdf file and pull data directly from it
-chla_autumn_2014 <- nc_open('Chla_autumn_2014.nc')
+chla_autumn_2014 <- nc_open('chla_autumn_2014.nc')
 #You may have a separate file for each variable - we can combine those later
 
 #Identify variables - use the names used in the netCDF data

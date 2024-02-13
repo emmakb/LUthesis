@@ -1,12 +1,11 @@
 library(ncdf4)
-library(dplyr)
 library(terra)
 library(tidyterra)
 
 #WINTER
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Winter")
 #2013
 #Look directly into netcdf file and pull data directly from it
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Winter")
 sst_winter_2013 <- nc_open('sst_winter_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
@@ -113,9 +112,9 @@ winter_df2 <- winter_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #____________________________________________________________________________________________________________
 
 #SPRING
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Spring")
 #2013
 #Look directly into netcdf file and pull data directly from it
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Spring")
 sst_spring_2013 <- nc_open('sst_spring_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
@@ -222,9 +221,9 @@ spring_df2 <- spring_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #____________________________________________________________________________________________________________
 
 #SUMMER
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Summer")
 #2013
 #Look directly into netcdf file and pull data directly from it
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Summer")
 sst_summer_2013 <- nc_open('sst_summer_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
@@ -331,9 +330,9 @@ summer_df2 <- summer_df %>% mutate(across(everything(), ~ifelse(is.nan(.), NA, .
 #____________________________________________________________________________________________________________
 
 #AUTUMN
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Autumn")
 #2013
 #Look directly into netcdf file and pull data directly from it
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Autumn")
 sst_autumn_2013 <- nc_open('sst_autumn_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
@@ -440,7 +439,7 @@ winter_rast_sst <- terra::rasterize(
   'sst' #or whatever variable name you're dealing with
 )
 
-#chlorophyll column has now been changed to "last" so must rename
+#sst column has now been changed to "last" so must rename
 winter_rast_sst<- rename(winter_rast_sst, sst=last)
 
 #spring
@@ -464,7 +463,7 @@ spring_rast_sst <- terra::rasterize(
   'sst' #or whatever variable name you're dealing with
 )
 
-#chlorophyll column has now been changed to "last" so must rename
+#sst column has now been changed to "last" so must rename
 spring_rast_sst<- rename(spring_rast_sst, sst=last)
 
 #summer
@@ -488,7 +487,7 @@ summer_rast_sst <- terra::rasterize(
   'sst' #or whatever variable name you're dealing with
 )
 
-#chlorophyll column has now been changed to "last" so must rename
+#sst column has now been changed to "last" so must rename
 summer_rast_sst<- rename(summer_rast_sst, sst=last)
 
 #autumn
@@ -512,5 +511,5 @@ autumn_rast_sst <- terra::rasterize(
   'sst' #or whatever variable name you're dealing with
 )
 
-#chlorophyll column has now been changed to "last" so must rename
+#sst column has now been changed to "last" so must rename
 autumn_rast_sst<- rename(autumn_rast_sst, sst=last)
