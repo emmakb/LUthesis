@@ -1,7 +1,5 @@
 library(ncdf4)
 library(raster)
-library(dplyr)
-library(tidyverse)
 library(terra)
 library(tidyterra)
 
@@ -373,6 +371,7 @@ winter_yoy_df2 <- winter_yoy_df %>% mutate(across(everything(), ~ifelse(is.nan(.
 #SPRING
 #2013
 #Look directly into netcdf file and pull data directly from it
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Chla/Spring")
 chla_spring_2013 <- nc_open('chla_spring_2013.nc')
 #You may have a separate file for each variable - we can combine those later
 
@@ -1403,7 +1402,7 @@ save(winter_sub_df2, file = "WSA_chla_winter_df")
 save(winter_yoy_df2, file = "WYOY_chla_winter_df")
 #spring
 save(spring_whitemale_df2, file = "WM_chla_spring_df")
-save(spring_whitefemale_df2, file = "WM_chla_spring_df")
+save(spring_whitefemale_df2, file = "WF_chla_spring_df")
 save(spring_sub_df2, file = "WSA_chla_spring_df")
 save(spring_yoy_df2, file = "WYOY_chla_spring_df")
 #summer
@@ -1420,7 +1419,7 @@ save(autumn_yoy_df2, file = "WYOY_chla_autumn_df")
 #___________________________________________________________________________________________
 #NEED TO RASTERIZE DATA FRAMES
 #Winter
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Winter")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Chla/Winter")
 load("WM_chla_winter_df")
 load("WF_chla_winter_df")
 load("WSA_chla_winter_df")
@@ -1448,7 +1447,7 @@ WM_winter_chla_rast <- terra::rasterize(
 )
 
 #chlorophyll column has now been changed to "last" so must rename
-WM_winter_chla_rast<- rename(WM_winter_rast_chla, chlorophyll=last)
+WM_winter_chla_rast<- rename(WM_winter_chla_rast, chlorophyll=last)
 
 #Mature females
 WF_chla_winter_df2<-winter_whitefemale_df2[,c(1,2,4)]
@@ -1472,7 +1471,7 @@ WF_winter_chla_rast <- terra::rasterize(
 )
 
 #chlorophyll column has now been changed to "last" so must rename
-WF_winter_chla_rast<- rename(WF_winter_rast_chla, chlorophyll=last)
+WF_winter_chla_rast<- rename(WF_winter_chla_rast, chlorophyll=last)
 
 #Sub-adults
 WSA_chla_winter_df2<-winter_sub_df2[,c(1,2,4)]
@@ -1496,7 +1495,7 @@ WSA_winter_chla_rast <- terra::rasterize(
 )
 
 #chlorophyll column has now been changed to "last" so must rename
-WSA_winter_chla_rast<- rename(WSA_winter_rast_chla, chlorophyll=last)
+WSA_winter_chla_rast<- rename(WSA_winter_chla_rast, chlorophyll=last)
 
 #Young of year
 WYOY_chla_winter_df2<-winter_yoy_df2[,c(1,2,4)]
@@ -1520,11 +1519,11 @@ WYOY_winter_chla_rast <- terra::rasterize(
 )
 
 #chlorophyll column has now been changed to "last" so must rename
-WYOY_winter_chla_rast<- rename(WYOY_winter_rast_chla, chlorophyll=last)
+WYOY_winter_chla_rast<- rename(WYOY_winter_chla_rast, chlorophyll=last)
 
 #___________________________________________________________________________________________
 #Spring
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Spring")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Chla/Spring")
 load("WM_chla_spring_df")
 load("WF_chla_spring_df")
 load("WSA_chla_spring_df")
@@ -1628,7 +1627,7 @@ WYOY_spring_chla_rast<- rename(WYOY_spring_chla_rast, chlorophyll=last)
 
 #___________________________________________________________________________________________
 #Summer
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Summer")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Chla/Summer")
 load("WM_chla_summer_df")
 load("WF_chla_summer_df")
 load("WSA_chla_summer_df")
@@ -1692,7 +1691,7 @@ summer_WSA_mask <- rast(nrows = length(unique(round(WSA_chla_summer_df2$latitude
                        crs = '+proj=longlat +datum=WGS84')
 
 summer_WSA_vect <- vect(
-  WM_chla_summer_df2,
+  WSA_chla_summer_df2,
   crs = '+proj=longlat +datum=WGS84',
   geom=c('longitude', 'latitude')
 )
@@ -1709,7 +1708,7 @@ WSA_summer_chla_rast <- rename(WSA_summer_chla_rast, chlorophyll=last)
 #Young of year
 WYOY_chla_summer_df2<-summer_yoy_df2[,c(1,2,4)]
 
-summer_WM_mask <- rast(nrows = length(unique(round(WYOY_chla_summer_df2$latitude, 5))),
+summer_WYOY_mask <- rast(nrows = length(unique(round(WYOY_chla_summer_df2$latitude, 5))),
                        ncol = length(unique(round(WYOY_chla_summer_df2$longitude, 5))),
                        xmin = min(WYOY_chla_summer_df2$longitude), xmax = max(WYOY_chla_summer_df2$longitude),
                        ymin = min(WYOY_chla_summer_df2$latitude), ymax = max(WYOY_chla_summer_df2$latitude),
@@ -1732,7 +1731,7 @@ WYOY_summer_chla_rast <- rename(WYOY_summer_chla_rast, chlorophyll=last)
 
 #___________________________________________________________________________________________
 #Autumn
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Chla/Autumn")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Chla/Autumn")
 load("WM_chla_autumn_df")
 load("WF_chla_autumn_df")
 load("WSA_chla_autumn_df")

@@ -1,7 +1,5 @@
 library(ncdf4)
 library(raster)
-library(dplyr)
-library(tidyverse)
 library(terra)
 library(tidyterra)
 
@@ -1417,14 +1415,14 @@ save(autumn_yoy_df2, file = "WYOY_sal_autumn_df")
 #___________________________________________________________________________________________
 #NEED TO RASTERIZE DATA FRAMES
 #Winter
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Salinity/Winter")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Salinity/Winter")
 load("WM_sal_winter_df")
 load("WF_sal_winter_df")
 load("WSA_sal_winter_df")
 load("WYOY_sal_winter_df")
 
 #Mature males
-WM_sal_winter_df2<-winter_whitefemale_df2[,c(1,2,4)]
+WM_sal_winter_df2<-winter_whitemale_df2[,c(1,2,4)]
 
 winter_WM_mask <- rast(nrows = length(unique(round(WM_sal_winter_df2$latitude, 5))),
                        ncol = length(unique(round(WM_sal_winter_df2$longitude, 5))),
@@ -1441,10 +1439,10 @@ winter_WM_vect <- vect(
 WM_winter_sal_rast <- terra::rasterize(
   winter_WM_vect,
   winter_WM_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
-#sst column has now been changed to "last" so must rename
+#sal column has now been changed to "last" so must rename
 WM_winter_sal_rast<- rename(WM_winter_sal_rast, salinity=last)
 
 #Mature females
@@ -1465,7 +1463,7 @@ winter_WF_vect <- vect(
 WF_winter_sal_rast <- terra::rasterize(
   winter_WF_vect,
   winter_WF_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1489,7 +1487,7 @@ winter_WSA_vect <- vect(
 WSA_winter_sal_rast <- terra::rasterize(
   winter_WSA_vect,
   winter_WSA_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1521,7 +1519,7 @@ WYOY_winter_sal_rast<- rename(WYOY_winter_sal_rast, salinity=last)
 
 #___________________________________________________________________________________________
 #Spring
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Salinity/Spring")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Salinity/Spring")
 load("WM_sal_spring_df")
 load("WF_sal_spring_df")
 load("WSA_sal_spring_df")
@@ -1545,7 +1543,7 @@ spring_WM_vect <- vect(
 WM_spring_sal_rast <- terra::rasterize(
   spring_WM_vect,
   spring_WM_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1569,7 +1567,7 @@ spring_WF_vect <- vect(
 WF_spring_sal_rast <- terra::rasterize(
   spring_WF_vect,
   spring_WF_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1593,7 +1591,7 @@ spring_WSA_vect <- vect(
 WSA_spring_sal_rast <- terra::rasterize(
   spring_WSA_vect,
   spring_WSA_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1617,7 +1615,7 @@ spring_WYOY_vect <- vect(
 WYOY_spring_sal_rast <- terra::rasterize(
   spring_WYOY_vect,
   spring_WYOY_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1625,7 +1623,7 @@ WYOY_spring_sal_rast<- rename(WYOY_spring_sal_rast, salinity=last)
 
 #___________________________________________________________________________________________
 #Summer
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Salinity/Summer")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Salinity/Summer")
 load("WM_sal_summer_df")
 load("WF_sal_summer_df")
 load("WSA_sal_summer_df")
@@ -1649,7 +1647,7 @@ summer_WM_vect <- vect(
 WM_summer_sal_rast <- terra::rasterize(
   summer_WM_vect,
   summer_WM_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1697,16 +1695,16 @@ summer_WSA_vect <- vect(
 WSA_summer_sal_rast <- terra::rasterize(
   summer_WSA_vect,
   summer_WSA_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
 WSA_summer_sal_rast <- rename(WSA_summer_sal_rast, salinity=last)
 
 #Young of year
-WYOY_chla_summer_df2<-summer_yoy_df2[,c(1,2,4)]
+WYOY_sal_summer_df2<-summer_yoy_df2[,c(1,2,4)]
 
-summer_WM_mask <- rast(nrows = length(unique(round(WYOY_sal_summer_df2$latitude, 5))),
+summer_WYOY_mask <- rast(nrows = length(unique(round(WYOY_sal_summer_df2$latitude, 5))),
                        ncol = length(unique(round(WYOY_sal_summer_df2$longitude, 5))),
                        xmin = min(WYOY_sal_summer_df2$longitude), xmax = max(WYOY_sal_summer_df2$longitude),
                        ymin = min(WYOY_sal_summer_df2$latitude), ymax = max(WYOY_sal_summer_df2$latitude),
@@ -1721,7 +1719,7 @@ summer_WYOY_vect <- vect(
 WYOY_summer_sal_rast <- terra::rasterize(
   summer_WYOY_vect,
   summer_WYOY_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1729,7 +1727,7 @@ WYOY_summer_sal_rast <- rename(WYOY_summer_sal_rast, salinity=last)
 
 #___________________________________________________________________________________________
 #Autumn
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/Salinity/Autumn")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/Salinity/Autumn")
 load("WM_sal_autumn_df")
 load("WF_sal_autumn_df")
 load("WSA_sal_autumn_df")
@@ -1753,7 +1751,7 @@ autumn_WM_vect <- vect(
 WM_autumn_sal_rast <- terra::rasterize(
   autumn_WM_vect,
   autumn_WM_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1777,7 +1775,7 @@ autumn_WF_vect <- vect(
 WF_autumn_sal_rast <- terra::rasterize(
   autumn_WF_vect,
   autumn_WF_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1801,7 +1799,7 @@ autumn_WSA_vect <- vect(
 WSA_autumn_sal_rast <- terra::rasterize(
   autumn_WSA_vect,
   autumn_WSA_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename
@@ -1825,7 +1823,7 @@ autumn_WYOY_vect <- vect(
 WYOY_autumn_sal_rast <- terra::rasterize(
   autumn_WYOY_vect,
   autumn_WYOY_mask,
-  'salinity' #or whatever variable name you're dealing with
+  'sal' #or whatever variable name you're dealing with
 )
 
 #sal column has now been changed to "last" so must rename

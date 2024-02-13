@@ -1,7 +1,5 @@
 library(ncdf4)
 library(raster)
-library(dplyr)
-library(tidyverse)
 library(terra)
 library(tidyterra)
 
@@ -1419,7 +1417,7 @@ save(autumn_yoy_df2, file = "WYOY_sst_autumn_df")
 #___________________________________________________________________________________________
 #NEED TO RASTERIZE DATA FRAMES
 #Winter
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Winter")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/SST/Winter")
 load("WM_sst_winter_df")
 load("WF_sst_winter_df")
 load("WSA_sst_winter_df")
@@ -1523,7 +1521,7 @@ WYOY_winter_sst_rast<- rename(WYOY_winter_sst_rast, sst=last)
 
 #___________________________________________________________________________________________
 #Spring
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Spring")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/SST/Spring")
 load("WM_sst_spring_df")
 load("WF_sst_spring_df")
 load("WSA_sst_spring_df")
@@ -1627,7 +1625,7 @@ WYOY_spring_sst_rast<- rename(WYOY_spring_sst_rast, sst=last)
 
 #___________________________________________________________________________________________
 #Summer
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Summer")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/SST/Summer")
 load("WM_sst_summer_df")
 load("WF_sst_summer_df")
 load("WSA_sst_summer_df")
@@ -1731,7 +1729,7 @@ WYOY_summer_sst_rast <- rename(WYOY_summer_sst_rast, sst=last)
 
 #___________________________________________________________________________________________
 #Autumn
-setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_sf/SST/Autumn")
+setwd("/Users/emmabradshaw/Desktop/Lund- Thesis/Code/LUThesis/NC_white/SST/Autumn")
 load("WM_sst_autumn_df")
 load("WF_sst_autumn_df")
 load("WSA_sst_autumn_df")
